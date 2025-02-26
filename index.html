@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nina's Profile Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Georgia, serif;
+            background-color: #fcfcfc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            opacity: 0;
+            color: #3d1717;
+        }
+
+        /* Profile Container */
+        .profile-container {
+            display: none;
+            background: white;
+            width: 380px;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1.55px solid #5c2b2b;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .profile-header {
+            position: relative;
+        }
+
+        .background-image {
+            width: 100%;
+            height: 120px;
+            border-radius: 10px;
+            background: url('https://i.ibb.co/RGD4hqV8/IMG-2360.jpg') center/cover no-repeat;
+        }
+
+        .profile-picture {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -30px;
+            left: 15px;
+            border: 3px solid white;
+        }
+
+        .profile-info {
+            text-align: left;
+            margin-top: 30px;
+            padding: 0 30px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .friend-btn, .message-btn, .options-btn {
+            border: none;
+            padding: 10px 25px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: bold;
+            border: 1px solid #5c2b2b;
+        }
+
+        .friend-btn {
+            background: #5c2b2b;
+            color: white;
+        }
+
+        .friend-btn:hover, .btn:hover {
+            background: #421a1a;
+        }
+
+        .message-btn, .options-btn {
+            background: white;
+            color: #5c2b2b;
+        }
+
+        .options-btn {
+            font-size: 20px;
+            padding: 6px 10px;
+        }
+
+        .profile-content {
+            padding: 10px 15px;
+        }
+
+        /* Friend and Message Containers */
+        .messages-container {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            width: 380px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border: 0.55px solid #5c2b2b;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .nav-button {
+            background-color: white;
+            color: #3d1717;
+            padding: 7px 6px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            text-align: center;
+            border: 1px solid #5c2b2b;
+        }
+
+        .nav-button:hover {
+            background-color: #5c2b2b;
+            color: white;
+        }
+
+        /* Sections */
+        .section-container {
+            display: none;
+            background-color: white;
+            border-radius: 8px;
+            padding: 8px;
+            margin-top: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #5c2b2b;
+        }
+
+        /* Home Button */
+        .btn-home {
+            padding: 7px 15px;
+            font-size: 12px;
+            border-radius: 6px;
+            border: 1px solid #5c2b2b;
+            background-color: white;
+            color: #3d1717;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-home:hover {
+            background-color: #5c2b2b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="top-bar">
+            <span class="back-arrow">⏎</span>
+            <span class="username">@𝒋𝒊𝒄𝒉𝒆𝒐𝒍𝒚𝒊. </span>
+            <span class="search-icon">
+             ⌕
+</span>
+        </div>
+
+        <div class="profile-header">
+            <div class="background-image"></div>
+            <img src="https://i.ibb.co/CKQRcbFR/IMG-1460.jpg" class="profile-picture">
+        </div>
+
+        <div class="profile-info">
+            <span class="handle">220 friends • 608 posts</span>
+            <p>ﾒ 𝒊𝒔 𝒊𝒕 𝒕𝒐𝒐 𝒍𝒂𝒕𝒆 𝒕𝒐 𝒔𝒆𝒆 𝒚𝒐𝒖?..</p>
+        </div>
+
+        <div class="buttons">
+            <button id="add-friend" class="friend-btn">➤ Add Friend</button>
+            <button id="message" class="message-btn">➤ Message</button>
+            <button id="more-options" class="options-btn">⋯</button>
+        </div>
+
+        <div class="profile-content" style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="https://i.ibb.co/Y4yn3HVM/IMG-2370.jpg" alt="Lovers Rock" style="width: 50px; height: 50px; border-radius: 5px;">
+                <div>
+                    <p style="margin: 0;">
+                        <a href="https://open.spotify.com/track/6dBUzqjtbnIa1TwYbyw5CM?si=JJTWUvMbT_aUsX4_9P85WA" target="_blank" style="text-decoration: none; font-weight: bold; color: #3d1717;">
+                            Lovers Rock
+                        </a>
+                    </p>
+                    <p style="font-size: 14px; color: #555; margin: 0;">TV Girl</p>
+                </div>
+            </div>
+            <span style="font-size: 20px; cursor: pointer;">⋯</span>
+        </div>
+    </div>
+
+    <div class="messages-container">
+        <h2>more of this userᯓ★</h2>
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="toggleSection('aboutMe')">
+                「 𝑨𝒃𝒐𝒖𝒕 𝒎𝒆 」  </button>
+            <button class="nav-button" onclick="toggleSection('byi')">「 𝑩𝒀𝑰 」 </button>
+            <button class="nav-button" onclick="toggleSection('dni')"> 「 𝑫𝑵𝑰 」</button>
+            <button class="nav-button" onclick="toggleSection('links')">
+                「 𝑳𝑰𝑵𝑲𝑺 」  </button>
+        </div>
+
+        <div id="aboutMe" class="section-container"><p>@𝒏𝒊𝒏𝒂/𝒆𝒊𝒏𝒂.</p>
+        <p> ➪ 11/27 ·  ENTJ · 8w9 | fil/eng.
+         — 4teen • ♐︎ ﹙she / her ﹚. ౨౿</p>
+        <h2>— Interests !! —</h2>
+      <p>  ⟢ Arctic Monkeys, Chase Atlantic, w2e, LaRosa, K-POP GG (LE SSERAFIM, NJ, IVE etc.), K-POP BG (ENHA, StrayKids, SEVENTEEN etc.) Laufey, Beabadoobee, Alec Benjamin, Billie Eilish, Jomm, Lumi A., 6arelyhuman, Lana Del Rey, Chris Grey, Steve Lacy, Coldplay, Mitski, Eyedress, The Walters, The Smiths, PARK BYEONG HOON, CAS & more !!<p/>
+      <p>  ⟢ Genshin, HSR, PGR, WuWa, Roblox (KAT | AOTR | DB | BLXFRTS | etc.), ALNST (Alien Stage), Return of the Mad Demon, BlueLock, AOT, PERSONA5, Epic The Musical, F1 || not in much fandoms, would love to know more!!^^ </p>
+        <h2> -- some characters i likee --</h2>
+            <a href="https://ibb.co/8DzMk7Tv">
+              <img src="https://i.ibb.co/1fsZcmhy/IMG-8829.jpg" alt="IMG-8829" style="width: 200px; height: 300px; border-radius: 5px; border: 0;">
+            </a>
+        
+        </div>
+        <div id="byi" class="section-container"><h2>BEFORE YOU INTERACT!</h2>
+        <p>In other Social Medias (exp; Tiktok, Insta, FB) I tend to over send/share reels/videos.</p>
+        <p> Yapper w/ SHORT Social Battery </p>
+        <p> WILD mood swings</p>
+            <p> Fast Typer (Communicates with "WGAT", "HKLP", "STODP" and more non-existent words)</p>
+            <p> Short Memory</p>
+            <p> DND abuser</p>
+            <p>KMS jokes (NOT pointed directly to anyone)</p>
+            <p>Cusses a little too often</p>
+            <p> Rage Quits too fast (skill issue lmao)</p>
+            <p> Sarcastic at times</p>
+        <p> Pspsps at cats (& dogs....)</p>
+        
+        </div>
+        <div id="dni" class="section-container"><h2>DO NOT INTERACT IF!!</h2>
+        <p> Engaged in racism, sexism, homophobia, transphobia, or any other form of discrimination  </p>
+<p> Pedophiles</p>
+<p> Accounts focused on kink or sexual content </p>
+<p> Are constantly seeking attention or validation</p>
+<p> Is a fond of PROBLEMATIC SHIPS or random shipping of chars</p>
+<p>Toxic, Manipulative, or Disrespectful  </p>
+<p>People that STICKS to me too much (esp those i'm not close w/)</p>
+<h2> CNPs</h2>
+<p>(lacking originality? smh)</p>
+        </div>
+        <div id="links" class="section-container"><h2>SOCMED</h2>
+        
+          <div class="links-container">
+              <div class="link-box">DC: jicheolyii</div>
+              <div class="link-box">Spotify: sjiu</div>
+              <div class="link-box">Insta: sojiuuu</div>
+              <div class="link-box">Tiktok: @reissoria</div>
+              <div class="link-box">Pinterest: jichyeolyii</div>
+                </div>
+            <div class="link-box">X: eina_vv</div>
+              <div class="link-box">PGR(North America Server): 14631141</div>
+
+              <div class="link-box">WuWa(Asia Server):  700663121</div>
+
+              <div class="link-box">GENSHIN IMPACT (Asia Server): 888225059</div>
+              
+
+        
+    </div>
+  <button class="btn-home" id="homeMessage">↺</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("body").css("opacity", "1");
+            $(".profile-container").fadeIn(600);
+        });
+
+        function toggleSection(sectionId) {
+            $(".section-container").not("#" + sectionId).fadeOut(300);
+            $("#" + sectionId).fadeToggle(400);
+        }
+
+        $("#add-friend").click(function () {
+            alert("Friend request sent!");
+        });
+
+        $("#message").click(function () {
+            $(".profile-container").hide();
+            $(".messages-container").fadeIn(400);
+        });
+
+        $("#homeMessage").click(function () {
+            $(".messages-container").hide();
+            $(".profile-container").fadeIn(400);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+/* General Styling */
+body {
+    font-family: Georgia, serif;
+    background-color: #fcfcfc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    opacity: 0;
+    color: #3d1717;
+}
+
+/* Profile Container */
+.profile-container {
+    display: none;
+    background: white;
+    width: 380px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1.55px solid #5c2b2b;
+}
+
+/* Profile Header */
+.background-image {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    background: url('https://i.ibb.co/RGD4hqV8/IMG-2360.jpg') center/cover no-repeat;
+}
+
+.profile-picture {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -30px;
+    left: 15px;
+    border: 3px solid white;
+}
+
+/* Buttons */
+.friend-btn, .message-btn, .options-btn {
+    border: 1px solid #5c2b2b;
+    padding: 10px 25px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.friend-btn {
+    background: #5c2b2b;
+    color: white;
+}
+
+.friend-btn:hover, .nav-button:hover, .btn-home:hover {
+    background: #421a1a;
+    color: white;
+}
+
+.message-btn, .options-btn {
+    background: white;
+    color: #5c2b2b;
+}
+
+.options-btn {
+    font-size: 20px;
+    padding: 6px 10px;
+}
+
+/* Sections */
+.section-container {
+    display: none;
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #5c2b2b;
+}
+
+/* Home Button */
+.btn-home {
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 6px;
+    border: 1px solid #5c2b2b;
+    background-color: white;
+    color: #3d1717;
+    margin-top: 15px;
+    transition: 0.3s;
+}
